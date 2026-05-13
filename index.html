@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio Fotográfico - BLNCRTSHOTS</title>
+    <link rel="icon" type="image/png" href="assets/images/LogoRaw.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    <link rel="preload" as="image" href="assets/images/fondo.jpg.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo" aria-label="Ir a la pagina principal">
+                <img src="assets/images/logo-blncrtshots.png" alt="Logo BLNCRTSHOTS" width="68" height="68">
+                <h1>BLNCRTSHOTS</h1>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#about">Sobre Mí</a></li>
+                <li><a href="#portfolio">Portafolio</a></li>
+                <li><a href="#reservas">Reservas</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2>Capturando Momentos, Creando Historias</h2>
+            <p>Fotógrafo profesional especializado en retratos, eventos y paisajes</p>
+            <a href="#portfolio" class="cta-button">Ver Mi Trabajo</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-header">
+                <h2>Sobre Mí</h2>
+            </div>
+            <div class="about-main">
+                <div class="about-text">
+                    <h3>Mi Visión Fotográfica</h3>
+                    <p>Soy un fotágrafo profesional dedicado a capturar momentos auténticos que perduren en el tiempo. Cada proyecto es una oportunidad para contar historias visuales únicas que reflejen la esencia de mis clientes.</p>
+                    <h3>Mi Experiencia</h3>
+                    <p>Con más de 4 años de experiencia en fotografía, trabajo continuamente para mejorar y ofrecer resultados que superen expectativas. Me enfoco en crear una experiencia positiva y profesional, logrando que mis clientes queden satisfechos y regresen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2>Mi Portafolio</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <a href="Golf R 7,5.html" style="display: block; color: inherit; text-decoration: none;">
+                        <img src="assets/images/Golf mk7,5 R 18.jpg" alt="Golf 7,5R" width="2000" height="3000" loading="lazy" decoding="async">
+                        <div class="overlay">
+                            <h3>Golf 7,5R</h3>
+                            <p></p>
+                        </div>
+                    </a>
+                </div>
+                <div class="portfolio-item">
+                    <a href="z900.html" style="display: block; color: inherit; text-decoration: none;">
+                        <img src="assets/images/z900 1.jpeg" alt="Z900" width="2000" height="3000" loading="lazy" decoding="async">
+                        <div class="overlay">
+                            <h3>Z900</h3>
+                            <p></p>
+                        </div>
+                    </a>
+                </div>
+                <div class="portfolio-item">
+                    <a href="Civic EK4.html" style="display: block; color: inherit; text-decoration: none;">
+                        <img src="assets/images/CIVIC EK4 1.jpg" alt="Civic EK4" width="422" height="633" loading="lazy" decoding="async">
+                        <div class="overlay">
+                            <h3>Civic EK4</h3>
+                            <p></p>
+                        </div>
+                    </a>
+                </div>
+                <div class="portfolio-item">
+                    <a href="retrato2.html" style="display: block; color: inherit; text-decoration: none;">
+                        <img src="assets/images/la bicha 1.jpg" alt="Retratos" width="422" height="633" loading="lazy" decoding="async">
+                        <div class="overlay">
+                            <h3>Eventos</h3>
+                            <p></p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reservas" class="reservas">
+        <div class="container">
+            <h2>Reservas / Sesiones</h2>
+            <div class="reservas-content">
+                <div class="reservas-text">
+                    <p>Selecciona el tipo de sesión que prefieres y revisa el precio disponible.</p>
+                    <ul>
+                        <li><strong>Base:</strong> 20€ - Sesión ligera con edición básica.</li>
+                        <li><strong>Premium:</strong> 30€ - Sesión extendida con edición avanzada incluida.</li>
+                    </ul>
+                    <form class="reserva-form">
+                        <label for="sessionType">Tipo de sesión</label>
+                        <select id="sessionType" name="sessionType">
+                            <option value="base" data-price="20">Base</option>
+                            <option value="premium" data-price="30">Premium</option>
+                        </select>
+                        <div class="price-display">Precio: <span id="sessionPrice">20€</span></div>
+                        <button type="button" class="reserva-button">Reservar ahora</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contacto</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="bx bx-envelope"></i>
+                        <p>blncrtshots@gmail.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="bx bx-map"></i>
+                        <p>Barcelona, España</p>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input id="contactName" name="name" type="text" placeholder="Nombre" required>
+                    <input id="contactEmail" name="email" type="email" placeholder="Email" required>
+                    <textarea id="contactMessage" name="message" placeholder="Mensaje" required></textarea>
+                    <button type="submit">Enviar Mensaje</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 BLNCRTSHOTS. Todos los derechos reservados.</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/blncrtshots/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <i class="bx bxl-instagram"></i>
+                </a>
+                <a href="https://www.tiktok.com/@blncrtshots" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                    <i class="bx bxl-tiktok"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>

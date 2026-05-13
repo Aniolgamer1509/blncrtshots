@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOLF R 7,5 - BLNCRTSHOTS</title>
+    <link rel="icon" type="image/png" href="assets/images/LogoRaw.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .gallery-section {
+            padding: 120px 0 50px;
+            text-align: center;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1000px;
+            margin: 40px auto 0;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        .gallery-item img:hover {
+            transform: scale(1.05);
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+        .lightbox-img {
+            max-width: 100%;
+            max-height: 100%;
+            transition: transform 0.3s ease;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        .zoom-controls {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .zoom-controls button {
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            padding: 10px;
+            margin: 0 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo" aria-label="Ir a la pagina principal">
+                <img src="assets/images/logo-blncrtshots.png" alt="Logo BLNCRTSHOTS" width="68" height="68">
+                <h1>BLNCRTSHOTS</h1>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="index.html#about">Sobre Mí</a></li>
+                <li><a href="index.html#portfolio">Portafolio</a></li>
+                <li><a href="index.html#reservas">Reservas</a></li>
+                <li><a href="index.html#contact">Contacto</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <section class="gallery-section">
+        <div class="container">
+            <h2>Golf R 7,5</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="assets/images/Golf mk7,5 R 1.jpg" alt="Retrato 1" width="422" height="633" fetchpriority="high" decoding="async">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/images/Golf mk7,5 R 2.jpg" alt="Retrato 2" width="422" height="633" loading="lazy" decoding="async">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/images/Golf mk7,5 R 3.jpg" alt="Retrato 3" width="422" height="633" loading="lazy" decoding="async">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/images/Golf mk7,5 R 11.jpg" alt="Retrato 4" width="422" height="633" loading="lazy" decoding="async">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/images/Golf mk7,5 R 17.jpg" alt="Retrato 5" width="422" height="633" loading="lazy" decoding="async">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/images/Golf mk7,5 R 12.jpg" alt="Retrato 6" width="422" height="633" loading="lazy" decoding="async">
+                </div>
+            </div>
+            <a href="index.html" class="back-link">Volver al Portafolio</a>
+        </div>
+        <div class="gallery-description" style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <h3>Golf R 7,5</h3>
+            <p>Este cliente contactó y vino desde Suiza para hacer una sesión.</p>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close" id="lightbox-close">&times;</span>
+            <img class="lightbox-img" id="lightbox-img" alt="">
+            <div class="zoom-controls">
+                <button id="zoom-in">+</button>
+                <button id="zoom-out">-</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxClose = document.getElementById('lightbox-close');
+        const zoomIn = document.getElementById('zoom-in');
+        const zoomOut = document.getElementById('zoom-out');
+        let scale = 1;
+
+        document.querySelectorAll('.gallery-item img').forEach(img => {
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                lightbox.classList.add('active');
+                scale = 1;
+                lightboxImg.style.transform = `scale(${scale})`;
+            });
+        });
+
+        lightboxClose.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('active');
+            }
+        });
+
+        zoomIn.addEventListener('click', () => {
+            scale += 0.2;
+            lightboxImg.style.transform = `scale(${scale})`;
+        });
+
+        zoomOut.addEventListener('click', () => {
+            if (scale > 0.2) {
+                scale -= 0.2;
+                lightboxImg.style.transform = `scale(${scale})`;
+            }
+        });
+    </script>
+</body>
+</html>
