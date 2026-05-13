@@ -1,7 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', event => {
-            const target = document.querySelector(anchor.getAttribute('href'));
+            const targetId = anchor.getAttribute('href');
+            if (!targetId || targetId === '#') return;
+
+            const target = document.querySelector(targetId);
             if (!target) return;
 
             event.preventDefault();
@@ -34,7 +37,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function showContactSuccess() {
-        document.querySelector('.contact-success-overlay')?.remove();
+        const previousOverlay = document.querySelector('.contact-success-overlay');
+        if (previousOverlay) {
+            previousOverlay.remove();
+        }
 
         const overlay = document.createElement('div');
         overlay.className = 'contact-success-overlay';
@@ -56,6 +62,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.querySelector('.contact-form');
 
     if (contactForm) {
+        const contactName = contactForm.querySelector('#contactName');
+        const contactEmail = contactForm.querySelector('#contactEmail');
+        const contactMessage = contactForm.querySelector('#contactMessage');
+
         contactForm.querySelectorAll('input, textarea').forEach(field => {
             let typingTimer;
 
@@ -72,10 +82,15 @@ document.addEventListener('DOMContentLoaded', () => {
         contactForm.addEventListener('submit', async event => {
             event.preventDefault();
 
+            if (!contactName || !contactEmail || !contactMessage) {
+                alert('Faltan campos del formulario de contacto.');
+                return;
+            }
+
             const datos = {
-                nombre: document.querySelector('#contactName').value.trim(),
-                email: document.querySelector('#contactEmail').value.trim(),
-                mensaje: document.querySelector('#contactMessage').value.trim()
+                nombre: contactName.value.trim(),
+                email: contactEmail.value.trim(),
+                mensaje: contactMessage.value.trim()
             };
 
             try {
@@ -107,6 +122,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (sessionType && sessionPrice) {
         sessionType.addEventListener('change', () => {
             const selectedOption = sessionType.selectedOptions[0];
+            if (!selectedOption) return;
+
             const price = selectedOption.dataset.price || '0';
             sessionPrice.textContent = `${price}\u20ac`;
         });
@@ -115,6 +132,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (reservaButton && sessionType) {
         reservaButton.addEventListener('click', () => {
             const selectedOption = sessionType.selectedOptions[0];
+            if (!selectedOption) return;
+
             alert(`Has seleccionado la sesi\u00f3n ${selectedOption.textContent} por ${selectedOption.dataset.price}\u20ac. Pronto te contactar\u00e9 para confirmar.`);
         });
     }
