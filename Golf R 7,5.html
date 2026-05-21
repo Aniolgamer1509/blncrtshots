@@ -56,33 +56,44 @@
             z-index: 1000;
             justify-content: center;
             align-items: center;
+            overflow: auto;
+            padding: 70px 20px;
         }
         .lightbox.active {
             display: flex;
         }
         .lightbox-content {
             position: relative;
-            max-width: 90%;
-            max-height: 90%;
+            max-width: 95vw;
+            max-height: calc(100vh - 140px);
+            overflow: auto;
+            text-align: center;
         }
         .lightbox-img {
-            max-width: 100%;
-            max-height: 100%;
-            transition: transform 0.3s ease;
+            display: block;
+            max-width: 90vw;
+            max-height: calc(100vh - 170px);
+            width: auto;
+            height: auto;
+            margin: 0 auto;
+            object-fit: contain;
+            transition: width 0.2s ease, max-height 0.2s ease;
         }
         .lightbox-close {
-            position: absolute;
-            top: -40px;
-            right: 0;
+            position: fixed;
+            top: 20px;
+            right: 30px;
             color: white;
             font-size: 30px;
             cursor: pointer;
+            z-index: 1001;
         }
         .zoom-controls {
-            position: absolute;
-            bottom: -50px;
+            position: fixed;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
+            z-index: 1001;
         }
         .zoom-controls button {
             background: rgba(255, 255, 255, 0.8);
@@ -103,7 +114,7 @@
             </a>
             <ul class="nav-links">
                 <li><a href="index.html">Inicio</a></li>
-                <li><a href="index.html#about">Sobre Mí</a></li>
+                <li><a href="index.html#about">Sobre mi</a></li>
                 <li><a href="index.html#portfolio">Portafolio</a></li>
                 <li><a href="index.html#reservas">Reservas</a></li>
                 <li><a href="index.html#contact">Contacto</a></li>
@@ -143,7 +154,7 @@
         </div>
         <div class="gallery-description" style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
             <h3>Golf R 7,5</h3>
-            <p>Este cliente contactó y vino desde Suiza para hacer una sesión.</p>
+            <p>Este cliente contacto y vino desde Suiza para hacer una sesion.</p>
         </div>
     </section>
 
@@ -168,35 +179,49 @@
         const zoomOut = document.getElementById('zoom-out');
         let scale = 1;
 
+        function applyZoom() {
+            if (scale === 1) {
+                lightboxImg.style.width = 'auto';
+                lightboxImg.style.maxWidth = '90vw';
+                lightboxImg.style.maxHeight = 'calc(100vh - 170px)';
+                return;
+            }
+
+            lightboxImg.style.width = `${90 * scale}vw`;
+            lightboxImg.style.maxWidth = 'none';
+            lightboxImg.style.maxHeight = 'none';
+        }
+
         document.querySelectorAll('.gallery-item img').forEach(img => {
             img.addEventListener('click', () => {
                 lightboxImg.src = img.src;
                 lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
                 scale = 1;
-                lightboxImg.style.transform = `scale(${scale})`;
+                applyZoom();
             });
         });
 
         lightboxClose.addEventListener('click', () => {
             lightbox.classList.remove('active');
+            document.body.style.overflow = '';
         });
 
         lightbox.addEventListener('click', (e) => {
             if (e.target === lightbox) {
                 lightbox.classList.remove('active');
+                document.body.style.overflow = '';
             }
         });
 
         zoomIn.addEventListener('click', () => {
-            scale += 0.2;
-            lightboxImg.style.transform = `scale(${scale})`;
+            scale = Math.min(scale + 0.2, 3);
+            applyZoom();
         });
 
         zoomOut.addEventListener('click', () => {
-            if (scale > 0.2) {
-                scale -= 0.2;
-                lightboxImg.style.transform = `scale(${scale})`;
-            }
+            scale = Math.max(scale - 0.2, 1);
+            applyZoom();
         });
     </script>
 </body>
