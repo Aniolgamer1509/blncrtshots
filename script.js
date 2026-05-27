@@ -1,3 +1,5 @@
+/* eslint-env browser */
+
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', event => {
@@ -65,10 +67,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const contactName = contactForm.querySelector('#contactName');
         const contactEmail = contactForm.querySelector('#contactEmail');
         const contactMessage = contactForm.querySelector('#contactMessage');
-        const isLocalPage = ['localhost', '127.0.0.1'].includes(window.location.hostname);
+        const localHosts = ['localhost', '127.0.0.1'];
+        const isLocalPage = localHosts.includes(window.location.hostname);
         const contactEndpoint = isLocalPage && window.location.port !== '3000'
             ? 'http://localhost:3000/contacto'
-            : '/contacto';
+            : `${window.location.origin}/contacto`;
 
         contactForm.querySelectorAll('input, textarea').forEach(field => {
             let typingTimer;
@@ -104,10 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     body: JSON.stringify(datos)
                 });
 
-                const contentType = respuesta.headers.get('content-type') || '';
-                const resultado = contentType.includes('application/json')
-                    ? await respuesta.json()
-                    : { ok: false, error: 'El servidor de contacto no esta respondiendo correctamente.' };
+                const resultado = await readJsonResponse(respuesta);
 
                 if (respuesta.ok && resultado.ok) {
                     contactForm.reset();
@@ -120,6 +120,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('No se pudo conectar con el servidor. Aseg\u00farate de encenderlo con "node server.js".');
             }
         });
+    }
+
+    async function readJsonResponse(response) {
+        const contentType = response.headers.get('content-type') || '';
+
+        if (contentType.includes('application/json')) {
+            return response.json();
+        }
+
+        return {
+            ok: false,
+            error: 'El servidor de contacto no esta respondiendo correctamente.'
+        };
     }
 
     const sessionType = document.querySelector('#sessionType');

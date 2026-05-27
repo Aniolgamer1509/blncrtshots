@@ -26,7 +26,7 @@ body {
     contain-intrinsic-size: 1px 900px;
 }
 
-/* Header */
+
 header {
     position: fixed;
     top: 0;
@@ -171,10 +171,10 @@ nav {
     transform: rotate(45deg) translate(-5px, -5px);
 }
 
-/* Hero Section */
+
 .hero {
-    height: 100vh;
     position: relative;
+    min-height: 100svh;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -188,29 +188,29 @@ nav {
     position: absolute;
     inset: 0;
     z-index: 1;
-    background: linear-gradient(rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.58));
+    background: rgba(0, 0, 0, 0.55);
 }
 
 .hero-slider {
     position: absolute;
     inset: 0;
-    z-index: 0;
     overflow: hidden;
+    z-index: 0;
 }
 
 .hero-track {
     display: flex;
     width: max-content;
-    min-height: 100%;
-    animation: heroSlide 46s linear infinite;
+    gap: 20px;
+    animation: heroSlide 40s linear infinite;
 }
 
 .hero-track img {
-    width: 34vw;
-    min-width: 360px;
-    height: 100vh;
+    width: 320px;
+    height: 100svh;
     object-fit: cover;
-    flex: 0 0 auto;
+    flex-shrink: 0;
+    border-radius: 12px;
 }
 
 .hero-content {
@@ -240,22 +240,12 @@ nav {
     border-radius: 50px;
     font-weight: 600;
     box-shadow: 0 8px 20px rgba(52, 152, 219, 0.25);
-    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .cta-button:hover {
     background: #2475a8;
-    box-shadow: 0 14px 28px rgba(36, 117, 168, 0.35);
     transform: translateY(-3px);
-}
-
-.cta-button:focus-visible {
-    outline: 3px solid rgba(255, 255, 255, 0.9);
-    outline-offset: 4px;
-}
-
-.cta-button:active {
-    transform: translateY(-1px);
 }
 
 @keyframes heroSlide {
@@ -268,7 +258,7 @@ nav {
     }
 }
 
-/* About Section */
+
 .about {
     padding: 5rem 0;
     background: #f8f9fa;
