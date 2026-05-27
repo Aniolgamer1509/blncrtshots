@@ -201,16 +201,15 @@ nav {
 .hero-track {
     display: flex;
     width: max-content;
-    gap: 20px;
+    gap: 0;
     animation: heroSlide 40s linear infinite;
 }
 
 .hero-track img {
-    width: 320px;
+    width: 60vw;
     height: 100svh;
     object-fit: cover;
     flex-shrink: 0;
-    border-radius: 12px;
 }
 
 .hero-content {
