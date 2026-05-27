@@ -206,7 +206,7 @@ nav {
 }
 
 .hero-track img {
-    width: 60vw;
+    width: 50vw;
     height: 100svh;
     object-fit: cover;
     flex-shrink: 0;
@@ -354,22 +354,6 @@ nav {
     font-size: 1.1rem;
     font-weight: 700;
     color: #2c3e50;
-}
-
-.reserva-button {
-    padding: 1rem;
-    background: #3498db;
-    color: white;
-    border: none;
-    border-radius: 50px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.reserva-button:hover {
-    background: #2980b9;
 }
 
 /* Portfolio Section */
