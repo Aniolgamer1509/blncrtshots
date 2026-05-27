@@ -137,14 +137,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const sessionType = document.querySelector('#sessionType');
     const sessionPrice = document.querySelector('#sessionPrice');
+    const reservaButton = document.querySelector('.reserva-button');
 
     if (sessionType && sessionPrice) {
         sessionType.addEventListener('change', () => {
             const selectedOption = sessionType.selectedOptions[0];
             if (!selectedOption) return;
 
-            const price = selectedOption.dataset.price || '0';
+            const price = selectedOption.getAttribute('data-price') || '0';
             sessionPrice.textContent = `${price}\u20ac`;
+        });
+    }
+
+    if (reservaButton && sessionType) {
+        reservaButton.addEventListener('click', () => {
+            const selectedOption = sessionType.selectedOptions[0];
+            if (!selectedOption) return;
+
+            const price = selectedOption.getAttribute('data-price') || '0';
+            const sessionName = selectedOption.textContent.trim();
+
+            alert(`Has seleccionado la sesi\u00f3n ${sessionName} por ${price}\u20ac. Pronto te contactar\u00e9 para confirmar.`);
         });
     }
 });
