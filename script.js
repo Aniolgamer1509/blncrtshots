@@ -65,6 +65,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const contactName = contactForm.querySelector('#contactName');
         const contactEmail = contactForm.querySelector('#contactEmail');
         const contactMessage = contactForm.querySelector('#contactMessage');
+        const isLocalPage = ['localhost', '127.0.0.1'].includes(window.location.hostname);
+        const contactEndpoint = isLocalPage && window.location.port !== '3000'
+            ? 'http://localhost:3000/contacto'
+            : '/contacto';
 
         contactForm.querySelectorAll('input, textarea').forEach(field => {
             let typingTimer;
@@ -94,13 +98,16 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             try {
-                const respuesta = await fetch('http://localhost:3000/contacto', {
+                const respuesta = await fetch(contactEndpoint, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(datos)
                 });
 
-                const resultado = await respuesta.json();
+                const contentType = respuesta.headers.get('content-type') || '';
+                const resultado = contentType.includes('application/json')
+                    ? await respuesta.json()
+                    : { ok: false, error: 'El servidor de contacto no esta respondiendo correctamente.' };
 
                 if (respuesta.ok && resultado.ok) {
                     contactForm.reset();

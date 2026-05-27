@@ -174,14 +174,49 @@ nav {
 /* Hero Section */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/images/fondo.jpg.jpg');
-    background-size: cover;
-    background-position: center;
+    position: relative;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: white;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.58));
+}
+
+.hero-slider {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.hero-track {
+    display: flex;
+    width: max-content;
+    min-height: 100%;
+    animation: heroSlide 46s linear infinite;
+}
+
+.hero-track img {
+    width: 34vw;
+    min-width: 360px;
+    height: 100vh;
+    object-fit: cover;
+    flex: 0 0 auto;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 1.5rem;
 }
 
 .hero-content h2 {
@@ -221,6 +256,16 @@ nav {
 
 .cta-button:active {
     transform: translateY(-1px);
+}
+
+@keyframes heroSlide {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
 }
 
 /* About Section */
@@ -565,7 +610,8 @@ nav {
     .contact-form input.is-typing,
     .contact-form textarea.is-typing,
     .contact-success-overlay,
-    .contact-success-message {
+    .contact-success-message,
+    .hero-track {
         animation: none;
         transition: none;
     }
@@ -611,6 +657,11 @@ footer {
 
     .hero-content p {
         font-size: 1rem;
+    }
+
+    .hero-track img {
+        width: 58vw;
+        min-width: 240px;
     }
 
     .about-main {

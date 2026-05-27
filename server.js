@@ -53,7 +53,6 @@ app.post('/contacto', async (req, res) => {
 
 const server = app.listen(PORT, HOST, () => {
   console.log(`Servidor listo en http://localhost:${PORT}`);
-  console.log(`En tu red local: http://TU-IP:${PORT}`);
 });
 
 server.on('error', error => {
