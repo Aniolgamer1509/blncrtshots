@@ -132,15 +132,11 @@
                         <p>Barcelona, España</p>
                     </div>
                 </div>
-             <form 
-    class="contact-form"
-    action="https://formsubmit.co/blncrtshots@gmail.com"
-    method="POST"
-><input type="hidden" name="_captcha" value="false">
+                <form class="contact-form" action="https://formsubmit.co/ajax/blncrtshots@gmail.com" method="POST">
 
     <input 
         id="contactName" 
-        name="name" 
+        name="Nombre" 
         type="text" 
         placeholder="Nombre" 
         required
@@ -148,7 +144,7 @@
 
     <input 
         id="contactEmail" 
-        name="email" 
+        name="Email" 
         type="email" 
         placeholder="Email" 
         required
@@ -159,14 +155,14 @@
 
         <select 
             id="sessionType" 
-            name="sessionType" 
+            name="Sesión seleccionada" 
             required
         >
-            <option value="Base - 20€">
+            <option value="Base - 20€" data-price="20">
                 Base - 20€
             </option>
 
-            <option value="Premium - 30€">
+            <option value="Premium - 30€" data-price="30">
                 Premium - 30€
             </option>
         </select>
@@ -178,7 +174,7 @@
 
     <textarea 
         id="contactMessage" 
-        name="message" 
+        name="Mensaje" 
         placeholder="Mensaje" 
         required
     ></textarea>

@@ -64,16 +64,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.querySelector('.contact-form');
 
     if (contactForm) {
-        const contactName = contactForm.querySelector('#contactName');
-        const contactEmail = contactForm.querySelector('#contactEmail');
-        const contactMessage = contactForm.querySelector('#contactMessage');
         const sessionType = contactForm.querySelector('#sessionType');
         const sessionPrice = contactForm.querySelector('#sessionPrice');
-        const localHosts = ['localhost', '127.0.0.1'];
-        const isLocalPage = localHosts.includes(window.location.hostname);
-        const contactEndpoint = isLocalPage && window.location.port !== '3000'
-            ? 'http://localhost:3000/contacto'
-            : `${window.location.origin}/contacto`;
+        const submitButton = contactForm.querySelector('button[type="submit"]');
 
         contactForm.querySelectorAll('input, textarea, select').forEach(field => {
             let typingTimer;
@@ -105,51 +98,42 @@ document.addEventListener('DOMContentLoaded', () => {
         contactForm.addEventListener('submit', async event => {
             event.preventDefault();
 
-            if (!contactName || !contactEmail || !contactMessage || !sessionType) {
-                alert('Faltan campos del formulario de contacto.');
+            if (!contactForm.checkValidity()) {
+                contactForm.reportValidity();
                 return;
             }
 
-            const datos = {
-                nombre: contactName.value.trim(),
-                email: contactEmail.value.trim(),
-                sesion: sessionType.value,
-                mensaje: contactMessage.value.trim()
-            };
+            showContactSuccess();
+
+            if (submitButton) {
+                submitButton.disabled = true;
+            }
 
             try {
-                const respuesta = await fetch(contactEndpoint, {
+                const response = await fetch(contactForm.action, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(datos)
+                    headers: { Accept: 'application/json' },
+                    body: new FormData(contactForm)
                 });
 
-                const resultado = await readJsonResponse(respuesta);
+                if (!response.ok) {
+                    throw new Error('No se pudo enviar el formulario.');
+                }
 
-                if (respuesta.ok && resultado.ok) {
+                window.setTimeout(() => {
                     contactForm.reset();
                     updateSessionPrice();
-                    showContactSuccess();
-                } else {
-                    alert(resultado.error || 'Vaya, hubo un error al enviar el mensaje.');
-                }
+                }, 2600);
             } catch (error) {
-                console.error('Error al conectar con el servidor:', error);
-                alert('No se pudo conectar con el servidor. Aseg\u00farate de encenderlo con "node server.js".');
+                console.error('Error enviando el formulario:', error);
+                alert('No se pudo enviar el mensaje. Inténtalo de nuevo en unos segundos.');
+            } finally {
+                window.setTimeout(() => {
+                    if (submitButton) {
+                        submitButton.disabled = false;
+                    }
+                }, 2600);
             }
         });
-    }
-
-    async function readJsonResponse(response) {
-        const contentType = response.headers.get('content-type') || '';
-
-        if (contentType.includes('application/json')) {
-            return response.json();
-        }
-
-        return {
-            ok: false,
-            error: 'El servidor de contacto no esta respondiendo correctamente.'
-        };
     }
 });

@@ -41,16 +41,6 @@ BLNCRTSHOTS WEB/
 2. Navega por las diferentes secciones usando el menú
 3. En dispositivos móviles, usa el botón hamburguesa para el menú
 
-## Servidor local con Node.js
-
-1. Abre una terminal en la carpeta del proyecto.
-2. Ejecuta `npm install` para instalar dependencias.
-3. Copia `.env.example` a `.env` y completa tus credenciales SMTP.
-4. Ejecuta `npm start`.
-5. Abre `http://localhost:3000` en el navegador.
-
-> El formulario de contacto ahora envía los datos al servidor y éste reenvía el correo a `blncrtshots@gmail.com`.
-
 ## Personalización
 
 - **Imágenes**: Reemplaza las imágenes en `assets/images/` con tus propias fotos
