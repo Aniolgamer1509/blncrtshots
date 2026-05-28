@@ -67,13 +67,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const contactName = contactForm.querySelector('#contactName');
         const contactEmail = contactForm.querySelector('#contactEmail');
         const contactMessage = contactForm.querySelector('#contactMessage');
+        const sessionType = contactForm.querySelector('#sessionType');
+        const sessionPrice = contactForm.querySelector('#sessionPrice');
         const localHosts = ['localhost', '127.0.0.1'];
         const isLocalPage = localHosts.includes(window.location.hostname);
         const contactEndpoint = isLocalPage && window.location.port !== '3000'
             ? 'http://localhost:3000/contacto'
             : `${window.location.origin}/contacto`;
 
-        contactForm.querySelectorAll('input, textarea').forEach(field => {
+        contactForm.querySelectorAll('input, textarea, select').forEach(field => {
             let typingTimer;
 
             field.addEventListener('input', () => {
@@ -86,10 +88,24 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
+        function updateSessionPrice() {
+            if (sessionType && sessionPrice) {
+                const selectedOption = sessionType.selectedOptions[0];
+                if (!selectedOption) return;
+
+                const price = selectedOption.getAttribute('data-price') || '0';
+                sessionPrice.textContent = `${price}\u20ac`;
+            }
+        }
+
+        if (sessionType && sessionPrice) {
+            sessionType.addEventListener('change', updateSessionPrice);
+        }
+
         contactForm.addEventListener('submit', async event => {
             event.preventDefault();
 
-            if (!contactName || !contactEmail || !contactMessage) {
+            if (!contactName || !contactEmail || !contactMessage || !sessionType) {
                 alert('Faltan campos del formulario de contacto.');
                 return;
             }
@@ -97,6 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const datos = {
                 nombre: contactName.value.trim(),
                 email: contactEmail.value.trim(),
+                sesion: sessionType.value,
                 mensaje: contactMessage.value.trim()
             };
 
@@ -111,6 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (respuesta.ok && resultado.ok) {
                     contactForm.reset();
+                    updateSessionPrice();
                     showContactSuccess();
                 } else {
                     alert(resultado.error || 'Vaya, hubo un error al enviar el mensaje.');
@@ -133,31 +151,5 @@ document.addEventListener('DOMContentLoaded', () => {
             ok: false,
             error: 'El servidor de contacto no esta respondiendo correctamente.'
         };
-    }
-
-    const sessionType = document.querySelector('#sessionType');
-    const sessionPrice = document.querySelector('#sessionPrice');
-    const reservaButton = document.querySelector('.reserva-button');
-
-    if (sessionType && sessionPrice) {
-        sessionType.addEventListener('change', () => {
-            const selectedOption = sessionType.selectedOptions[0];
-            if (!selectedOption) return;
-
-            const price = selectedOption.getAttribute('data-price') || '0';
-            sessionPrice.textContent = `${price}\u20ac`;
-        });
-    }
-
-    if (reservaButton && sessionType) {
-        reservaButton.addEventListener('click', () => {
-            const selectedOption = sessionType.selectedOptions[0];
-            if (!selectedOption) return;
-
-            const price = selectedOption.getAttribute('data-price') || '0';
-            const sessionName = selectedOption.textContent.trim();
-
-            alert(`Has seleccionado la sesi\u00f3n ${sessionName} por ${price}\u20ac. Pronto te contactar\u00e9 para confirmar.`);
-        });
     }
 });

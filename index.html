@@ -24,7 +24,6 @@
                 <li><a href="#home">Inicio</a></li>
                 <li><a href="#about">Sobre Mí</a></li>
                 <li><a href="#portfolio">Portafolio</a></li>
-                <li><a href="#reservas">Reservas</a></li>
                 <li><a href="#contact">Contacto</a></li>
             </ul>
             <div class="hamburger">
@@ -119,30 +118,6 @@
         </div>
     </section>
 
-    <section id="reservas" class="reservas">
-        <div class="container">
-            <h2>Reservas / Sesiones</h2>
-            <div class="reservas-content">
-                <div class="reservas-text">
-                    <p>Selecciona el tipo de sesión que prefieres y revisa el precio disponible.</p>
-                    <ul>
-                        <li><strong>Base:</strong> 20€ - Sesión ligera con edición básica.</li>
-                        <li><strong>Premium:</strong> 30€ - Sesión extendida con edición avanzada incluida.</li>
-                    </ul>
-                    <form class="reserva-form">
-                        <label for="sessionType">Tipo de sesión</label>
-                        <select id="sessionType" name="sessionType">
-                            <option value="base" data-price="20">Base</option>
-                            <option value="premium" data-price="30">Premium</option>
-                        </select>
-                        <div class="price-display">Precio: <span id="sessionPrice">20€</span></div>
-                        <button type="button" class="reserva-button">Reservar ahora</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section id="contact" class="contact">
         <div class="container">
             <h2>Contacto</h2>
@@ -157,12 +132,67 @@
                         <p>Barcelona, España</p>
                     </div>
                 </div>
-                <form class="contact-form">
-                    <input id="contactName" name="name" type="text" placeholder="Nombre" required>
-                    <input id="contactEmail" name="email" type="email" placeholder="Email" required>
-                    <textarea id="contactMessage" name="message" placeholder="Mensaje" required></textarea>
-                    <button type="submit">Enviar Mensaje</button>
-                </form>
+             <form 
+    class="contact-form"
+    action="https://formsubmit.co/blncrtshots@gmail.com"
+    method="POST"
+>
+
+    <input 
+        id="contactName" 
+        name="name" 
+        type="text" 
+        placeholder="Nombre" 
+        required
+    >
+
+    <input 
+        id="contactEmail" 
+        name="email" 
+        type="email" 
+        placeholder="Email" 
+        required
+    >
+
+    <div class="session-field">
+        <label for="sessionType">Tipo de sesión</label>
+
+        <select 
+            id="sessionType" 
+            name="sessionType" 
+            required
+        >
+            <option value="Base - 20€">
+                Base - 20€
+            </option>
+
+            <option value="Premium - 30€">
+                Premium - 30€
+            </option>
+        </select>
+
+        <div class="price-display">
+            Precio: <span id="sessionPrice">20€</span>
+        </div>
+    </div>
+
+    <textarea 
+        id="contactMessage" 
+        name="message" 
+        placeholder="Mensaje" 
+        required
+    ></textarea>
+
+    <!-- Configuración FormSubmit -->
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_subject" value="Nuevo mensaje desde la web">
+    <input type="hidden" name="_template" value="table">
+
+    <button type="submit">
+        Enviar Mensaje
+    </button>
+
+</form>
             </div>
         </div>
     </section>

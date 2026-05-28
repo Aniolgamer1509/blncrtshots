@@ -55,9 +55,9 @@ app.get('/', (req, res) => {
 
 app.post('/contacto', async (req, res) => {
   try {
-    const { nombre, email, mensaje } = req.body;
+    const { nombre, email, sesion, mensaje } = req.body;
 
-    if (!nombre || !email || !mensaje) {
+    if (!nombre || !email || !sesion || !mensaje) {
       return res.status(400).json({
         ok: false,
         error: 'Faltan campos'
@@ -73,6 +73,7 @@ app.post('/contacto', async (req, res) => {
         <h2>Nuevo mensaje</h2>
         <p><strong>Nombre:</strong> ${nombre}</p>
         <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Sesión seleccionada:</strong> ${sesion}</p>
         <p><strong>Mensaje:</strong></p>
         <p>${mensaje}</p>
       `
