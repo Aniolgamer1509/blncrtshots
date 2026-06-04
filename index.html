@@ -45,17 +45,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div class="hero-slider" aria-hidden="true">
             <div class="hero-track">
                 <img src="assets/images/gti tcr (1).jpg" alt="">
-                <img src="assets/images/a45s.jpg"alt="">
-                <img src="assets/images/wheelie.jpg"alt="">
-                <img src="assets/images/gallardo.jpg"alt="">
-                <img src="assets/images/yaris gr.jpg"alt="">
-                <img src="assets/images/r34 midnight purple.jpg"alt="">
-                <img src="assets/images/krm.jpg"alt="">
-                <img src="assets/images/supra.jpeg"alt="">
-                <img src="assets/images/ferrari.jpeg"alt="">
-                <img src="assets/images/seat.jpeg"alt="">
-                <img src="assets/images/r500.jpeg"alt="">
-                <img src="assets/images/bmw.jpeg"alt="">
+                <img src="assets/images/a45s.jpg" alt="">
+                <img src="assets/images/wheelie.jpg" alt="">
+                <img src="assets/images/gallardo.jpg" alt="">
+                <img src="assets/images/yaris gr.jpg" alt="">
+                <img src="assets/images/r34 midnight purple.jpg" alt="">
+                <img src="assets/images/krm.jpg" alt="">
+                <img src="assets/images/supra.jpeg" alt="">
+                <img src="assets/images/ferrari.jpeg" alt="">
+                <img src="assets/images/seat.jpeg" alt="">
+                <img src="assets/images/r500.jpeg" alt="">
+                <img src="assets/images/bmw.jpeg" alt="">
             </div>
         </div>
         <div class="hero-content">
@@ -136,7 +136,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     </div>
                     <div class="contact-item">
                         <i class="bx bx-map"></i>
-                        <p>Barcelona, España</p>
+                        <p>Girona, España</p>
                     </div>
                 </div>
                 <form class="contact-form" action="https://formsubmit.co/ajax/blncrtshots@gmail.com" method="POST">
@@ -158,6 +158,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     >
 
     <div class="session-field">
+        <label for="vehicleType">Tipo de vehículo</label>
+
+        <select
+            id="vehicleType"
+            name="Tipo de vehículo"
+            required
+        >
+            <option value="Coche">Coche</option>
+            <option value="Moto">Moto</option>
+        </select>
+    </div>
+
+    <div class="session-field">
         <label for="sessionType">Tipo de sesión</label>
 
         <select 
@@ -165,17 +178,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             name="Sesión seleccionada" 
             required
         >
-            <option value="Base - 20€" data-price="20">
-                Base - 20€
+            <option value="Coche - Base - 20 euros" data-session="Base" data-car-price="20" data-moto-price="10">
+                Base - 20&euro;
             </option>
 
-            <option value="Premium - 30€" data-price="30">
-                Premium - 30€
+            <option value="Coche - Premium - 30 euros" data-session="Premium" data-car-price="30" data-moto-price="20">
+                Premium - 30&euro;
             </option>
         </select>
 
         <div class="price-display">
-            Precio: <span id="sessionPrice">20€</span>
+            Precio: <span id="sessionPrice">20&euro;</span>
         </div>
     </div>
 
@@ -187,6 +200,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     ></textarea>
 
     <!-- Configuración FormSubmit -->
+    <input type="hidden" id="sessionPriceInput" name="Precio" value="20 euros">
     <input type="hidden" name="_captcha" value="false">
     <input type="hidden" name="_subject" value="Nuevo mensaje desde la web">
     <input type="hidden" name="_template" value="table">
@@ -216,3 +230,4 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     <script src="script.js"></script>
 </body>
+</html>
