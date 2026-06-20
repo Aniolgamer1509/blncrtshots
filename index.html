@@ -73,10 +73,10 @@
                 <h1>BLNCRTSHOTS</h1>
             </a>
             <ul class="nav-links">
-                <li><a href="#home">Inicio</a></li>
-                <li><a href="#about">Sobre mí</a></li>
-                <li><a href="#portfolio">Portafolio</a></li>
-                <li><a href="#contact">Contacto</a></li>
+                <li><a href="./">Inicio</a></li>
+                <li><a href="portafolio/">Portafolio</a></li>
+                <li><a href="tarifas/">Tarifas</a></li>
+                <li><a href="contacto/">Contacto</a></li>
             </ul>
             <div class="hamburger">
                 <span></span>
@@ -106,7 +106,7 @@
         <div class="hero-content">
             <h2>Capturando momentos, creando historias</h2>
             <p>Fotógrafo profesional especializado en retratos, eventos y paisajes</p>
-            <a href="#portfolio" class="cta-button">Ver mi trabajo</a>
+            <a href="portafolio/" class="cta-button">Ver mi trabajo</a>
         </div>
     </section>
 
@@ -116,6 +116,9 @@
                 <h2>Sobre mí</h2>
             </div>
             <div class="about-main">
+                <div class="about-image">
+                    <img src="assets/images/fondo.jpg.jpg" alt="BLNCRTSHOTS trabajando en fotografía" width="1280" height="853" loading="lazy" decoding="async">
+                </div>
                 <div class="about-text">
                     <h3>Mi visión fotográfica</h3>
                     <p>Soy un fotógrafo profesional dedicado a capturar momentos auténticos que perduren en el tiempo. Cada proyecto es una oportunidad para contar historias visuales únicas que reflejen la esencia de mis clientes.</p>
@@ -126,135 +129,18 @@
         </div>
     </section>
 
-    <section id="portfolio" class="portfolio">
+    <section class="services">
         <div class="container">
-            <h2>Mi portafolio</h2>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <a href="golf-r-75/" style="display: block; color: inherit; text-decoration: none;">
-                        <img src="assets/images/Golf mk7,5 R 18.jpg" alt="Golf 7,5R" width="2000" height="3000" loading="lazy" decoding="async">
-                        <div class="overlay">
-                            <h3>Golf 7,5R</h3>
-                            <p></p>
-                        </div>
-                    </a>
+            <h2>Servicios</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <img src="assets/images/bmw.jpg" alt="Fotografía de coches" width="2000" height="3000" loading="lazy" decoding="async">
+                    <h3>COCHES</h3>
                 </div>
-                <div class="portfolio-item">
-                    <a href="z900/" style="display: block; color: inherit; text-decoration: none;">
-                        <img src="assets/images/z900 1.jpeg" alt="Z900" width="2000" height="3000" loading="lazy" decoding="async">
-                        <div class="overlay">
-                            <h3>Z900</h3>
-                            <p></p>
-                        </div>
-                    </a>
+                <div class="service-item">
+                    <img src="assets/images/r125.jpeg" alt="Fotografía de motos" width="2000" height="3000" loading="lazy" decoding="async">
+                    <h3>MOTOS</h3>
                 </div>
-                <div class="portfolio-item">
-                    <a href="civic-ek4/" style="display: block; color: inherit; text-decoration: none;">
-                        <img src="assets/images/CIVIC EK4 1.jpg" alt="Civic EK4" width="422" height="633" loading="lazy" decoding="async">
-                        <div class="overlay">
-                            <h3>Civic EK4</h3>
-                            <p></p>
-                        </div>
-                    </a>
-                </div>
-                <div class="portfolio-item">
-                    <a href="eventos/" style="display: block; color: inherit; text-decoration: none;">
-                        <img src="assets/images/la bicha 1.jpg" alt="Retratos" width="422" height="633" loading="lazy" decoding="async">
-                        <div class="overlay">
-                            <h3>Eventos</h3>
-                            <p></p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2>Contacto</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="bx bx-envelope"></i>
-                        <p>blncrtshots@gmail.com</p>
-                    </div>
-                    <div class="contact-item">
-                        <i class="bx bx-map"></i>
-                        <p>Girona, España</p>
-                    </div>
-                </div>
-                <form class="contact-form" action="https://formsubmit.co/ajax/blncrtshots@gmail.com" method="POST">
-
-    <input 
-        id="contactName" 
-        name="Nombre" 
-        type="text" 
-        placeholder="Nombre" 
-        required
-    >
-
-    <input 
-        id="contactEmail" 
-        name="Email" 
-        type="email" 
-        placeholder="Email" 
-        required
-    >
-
-    <div class="session-field">
-        <label for="vehicleType">Tipo de vehículo</label>
-
-        <select
-            id="vehicleType"
-            name="Tipo de vehículo"
-            required
-        >
-            <option value="Coche">Coche</option>
-            <option value="Moto">Moto</option>
-        </select>
-    </div>
-
-    <div class="session-field">
-        <label for="sessionType">Tipo de sesión</label>
-
-        <select 
-            id="sessionType" 
-            name="Sesión seleccionada" 
-            required
-        >
-            <option value="Coche - Base - 20 euros" data-session="Base" data-car-price="20" data-moto-price="10">
-                Base - 20&euro;
-            </option>
-
-            <option value="Coche - Premium - 30 euros" data-session="Premium" data-car-price="30" data-moto-price="20">
-                Premium - 30&euro;
-            </option>
-        </select>
-
-        <div class="price-display">
-            Precio: <span id="sessionPrice">20&euro;</span>
-        </div>
-    </div>
-
-    <textarea 
-        id="contactMessage" 
-        name="Mensaje" 
-        placeholder="Mensaje" 
-        required
-    ></textarea>
-
-    <!-- Configuración FormSubmit -->
-    <input type="hidden" id="sessionPriceInput" name="Precio" value="20 euros">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_subject" value="Nuevo mensaje desde la web">
-    <input type="hidden" name="_template" value="table">
-
-    <button type="submit">
-        Enviar mensaje
-    </button>
-
-</form>
             </div>
         </div>
     </section>

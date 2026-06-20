@@ -18,6 +18,7 @@ body {
 }
 
 .about,
+.services,
 .portfolio,
 .contact,
 .gallery-section {
@@ -44,7 +45,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.75rem 1.5rem 0.75rem 0.75rem;
+    padding: 0.75rem 3.5rem 0.75rem 0.75rem;
     margin: 0 auto;
 }
 
@@ -95,12 +96,14 @@ nav {
 
 .nav-links {
     display: flex;
+    gap: 3rem;
     list-style: none;
 }
 
 .nav-links.active {
     display: flex;
     flex-direction: column;
+    gap: 1rem;
     position: absolute;
     top: 100%;
     left: 0;
@@ -111,13 +114,14 @@ nav {
 }
 
 .nav-links li {
-    margin-left: 2rem;
+    margin-left: 0;
 }
 
 .nav-links a {
     display: inline-block;
     text-decoration: none;
     color: #2c3e50;
+    font-size: 1.08rem;
     font-weight: 500;
     padding: 0.35rem 0;
     position: relative;
@@ -246,6 +250,15 @@ nav {
     transform: translateY(-3px);
 }
 
+.page-main {
+    min-height: calc(100svh - 141px);
+}
+
+.page-main .portfolio,
+.page-main .contact {
+    padding-top: 8rem;
+}
+
 @keyframes heroSlide {
     from {
         transform: translateX(0);
@@ -270,9 +283,24 @@ nav {
 }
 
 .about-main {
-    max-width: 760px;
+    display: grid;
+    grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.1fr);
+    gap: 3rem;
+    align-items: center;
+    max-width: 1080px;
     margin: 0 auto;
-    text-align: center;
+}
+
+.about-image img {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+}
+
+.about-text {
+    text-align: left;
 }
 
 .about-text h3 {
@@ -292,6 +320,56 @@ nav {
     line-height: 1.8;
     color: #555;
     margin-bottom: 1.5rem;
+}
+
+.services {
+    padding: 5rem 0;
+    background: white;
+}
+
+.services h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #2c3e50;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.service-item {
+    color: inherit;
+    text-align: center;
+    transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.service-item:hover {
+    filter: drop-shadow(0 18px 22px rgba(36, 117, 168, 0.24));
+    transform: translateY(-18px) scale(1.035);
+}
+
+.service-item img {
+    width: 100%;
+    height: 620px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.service-item:hover img {
+    box-shadow: 0 18px 32px rgba(0, 0, 0, 0.2);
+    transform: scale(1.02);
+}
+
+.service-item h3 {
+    margin-top: 1rem;
+    color: #2c3e50;
+    font-size: 1.35rem;
+    font-weight: 700;
 }
 
 /* Portfolio Section */
@@ -427,22 +505,6 @@ nav {
 .contact-form select.is-typing,
 .contact-form textarea.is-typing {
     animation: fieldTypingPulse 0.45s ease;
-}
-
-.session-field {
-    display: grid;
-    gap: 0.5rem;
-}
-
-.session-field label {
-    font-weight: 600;
-    color: #2c3e50;
-}
-
-.price-display {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: #2c3e50;
 }
 
 .contact-form textarea {
@@ -602,7 +664,13 @@ footer {
     }
 
     .about-main {
+        grid-template-columns: 1fr;
         max-width: 100%;
+        gap: 2rem;
+    }
+
+    .about-image img {
+        height: 420px;
     }
 
     .contact-content {
@@ -612,6 +680,14 @@ footer {
 
     .portfolio-grid {
         grid-template-columns: 1fr;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .service-item img {
+        height: 520px;
     }
 
 }
@@ -636,5 +712,149 @@ footer {
 
     .container {
         padding: 0 15px;
+    }
+
+    .service-item img {
+        height: 430px;
+    }
+}
+
+/* Pricing Page Styles */
+.pricing {
+    padding: 4rem 0 5rem;
+    background: white;
+    color: #333;
+}
+
+.pricing-section-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.pricing-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.pricing-header-image {
+    width: calc(100% - 100px);
+    height: 700px;
+    object-fit: cover;
+    border-radius: 0;
+    margin: 0 50px 3rem 50px;
+    display: block;
+}
+
+.pricing .container h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 4rem;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.pricing-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.pricing-service-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.pricing-service-card img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    margin-bottom: 2rem;
+    border-radius: 4px;
+}
+
+.card-content {
+    flex-grow: 1;
+}
+
+.pricing-service-card h3 {
+    font-size: 1.8rem;
+    color: #000;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.price {
+    font-size: 1.3rem;
+    color: #e74c3c;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.features-list {
+    list-style: none;
+    color: #000;
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
+
+.features-list li {
+    margin-bottom: 0.5rem;
+}
+
+.features-list li:before {
+    content: "- ";
+    color: #e74c3c;
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .pricing {
+        padding: 5rem 0 3rem;
+    }
+
+    .pricing-header-image {
+        height: 350px;
+        margin: 0 20px 2rem 20px;
+        width: calc(100% - 40px);
+    }
+
+    .pricing-section-title {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .pricing-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .pricing .container h2 {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .pricing-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .pricing-service-card img {
+        height: 280px;
+    }
+
+    .pricing-service-card h3 {
+        font-size: 1.5rem;
     }
 }

@@ -64,10 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.querySelector('.contact-form');
 
     if (contactForm) {
-        const vehicleType = contactForm.querySelector('#vehicleType');
-        const sessionType = contactForm.querySelector('#sessionType');
-        const sessionPrice = contactForm.querySelector('#sessionPrice');
-        const sessionPriceInput = contactForm.querySelector('#sessionPriceInput');
         const submitButton = contactForm.querySelector('button[type="submit"]');
 
         contactForm.querySelectorAll('input, textarea, select').forEach(field => {
@@ -82,40 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 450);
             });
         });
-
-        function updateSessionPrice() {
-            if (sessionType && sessionPrice) {
-                const selectedOption = sessionType.selectedOptions[0];
-                if (!selectedOption) return;
-
-                const isMoto = vehicleType && vehicleType.value === 'Moto';
-                const priceAttribute = isMoto ? 'data-moto-price' : 'data-car-price';
-                const vehicleLabel = isMoto ? 'Moto' : 'Coche';
-
-                Array.from(sessionType.options).forEach(option => {
-                    const sessionLabel = option.getAttribute('data-session') || option.textContent.trim();
-                    const optionPrice = option.getAttribute(priceAttribute) || '0';
-
-                    option.value = `${vehicleLabel} - ${sessionLabel} - ${optionPrice} euros`;
-                    option.textContent = `${sessionLabel} - ${optionPrice}\u20ac`;
-                });
-
-                const price = selectedOption.getAttribute(priceAttribute) || '0';
-                sessionPrice.textContent = `${price}\u20ac`;
-
-                if (sessionPriceInput) {
-                    sessionPriceInput.value = `${price} euros`;
-                }
-            }
-        }
-
-        if (sessionType && sessionPrice) {
-            sessionType.addEventListener('change', updateSessionPrice);
-            if (vehicleType) {
-                vehicleType.addEventListener('change', updateSessionPrice);
-            }
-            updateSessionPrice();
-        }
 
         contactForm.addEventListener('submit', async event => {
             event.preventDefault();
@@ -144,7 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 window.setTimeout(() => {
                     contactForm.reset();
-                    updateSessionPrice();
                 }, 2600);
             } catch (error) {
                 console.error('Error enviando el formulario:', error);
