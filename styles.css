@@ -160,6 +160,16 @@ nav {
     display: none;
     flex-direction: column;
     cursor: pointer;
+    gap: 5px;
+    padding: 0.5rem;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: #2c3e50;
+    border-radius: 3px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .hamburger.active span:nth-child(1) {
@@ -644,7 +654,27 @@ footer {
 /* Responsive Design */
 @media (max-width: 768px) {
     .nav-links {
-        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+    .nav-links.active {
+        display: flex;
+        max-height: 500px;
+    }
+
+    .nav-links li {
+        padding: 0 1rem;
+    }
+
+    .nav-links a {
+        padding: 0.75rem 0;
     }
 
     .hamburger {
@@ -722,7 +752,7 @@ footer {
 
 /* Pricing Page Styles */
 .pricing {
-    padding: 4rem 0 5rem;
+    padding: 0 0 5rem;
     background: white;
     color: #333;
 }
@@ -733,7 +763,7 @@ footer {
     color: #2c3e50;
     margin-bottom: 0.5rem;
     text-align: center;
-    margin-top: 2rem;
+    margin-top: -1.5rem;
 }
 
 .pricing-subtitle {
